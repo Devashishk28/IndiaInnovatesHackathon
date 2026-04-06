@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(where python3:*)",
+      "Bash(where python:*)",
+      "Bash(py --version)",
+      "Bash(python3 -c \"import sklearn; print\\(''sklearn ok''\\)\")",
+      "Bash(PY=\"C:/Users/shiva/AppData/Local/Python/bin/python3.exe\")",
+      "Bash(\"$PY\" -c \"import sklearn; import xgboost; import joblib; print\\(''all deps ok''\\)\")",
+      "Bash(\"$PY\" models/train_model.py)",
+      "Bash(PYTHONIOENCODING=utf-8 \"$PY\" models/train_model.py)",
+      "Bash(\"$PY\" -c \"import fastapi, uvicorn, jose, passlib, httpx; print\\(''All FastAPI deps OK''\\)\")",
+      "Bash(PY=\"C:/Users/shiva/AppData/Local/Python/bin/python3.exe\" \"$PY\" -m pip install fastapi==0.111.0 uvicorn==0.30.1 python-dotenv==1.0.1 httpx==0.27.0 \"python-jose[cryptography]==3.3.0\" \"passlib[bcrypt]==1.7.4\" python-multipart==0.0.9 pymongo==4.7.2)",
+      "Bash(\"$PY\" -c \"import fastapi, uvicorn, jose, passlib, httpx, pymongo; print\\(''All FastAPI deps OK''\\)\")",
+      "Bash(for f:*)",
+      "Bash(do)",
+      "Bash(\"$PY\" -m py_compile \"$f\")",
+      "Bash(echo \"OK: $f\")",
+      "Bash(echo \"FAIL: $f\")",
+      "Bash(curl -s http://localhost:8000/api/summary)",
+      "Bash(curl -s http://localhost:8000/api/wards)",
+      "Bash(curl -s -X POST http://localhost:8000/api/predict/source -H \"Content-Type: application/json\" -d '{\"\"pm25\"\":385,\"\"pm10\"\":550,\"\"no2\"\":120,\"\"co\"\":1.5,\"\"o3\"\":30,\"\"so2\"\":15,\"\"temperature\"\":22,\"\"humidity\"\":65,\"\"wind_speed\"\":3}')",
+      "Bash(curl -s -X POST http://localhost:8000/api/auth/login -H \"Content-Type: application/json\" -d '{\"\"\"\"email\"\"\"\":\"\"\"\"admin@delhi.gov.in\"\"\"\",\"\"\"\"password\"\"\"\":\"\"\"\"Admin@123\"\"\"\"}')",
+      "Bash(npm run:*)",
+      "Bash(curl -s http://localhost:8000/api/alerts)",
+      "Bash(curl -s http://localhost:8000/api/blindspots)",
+      "Bash(grep -n \"<cell\\\\|from ''recharts''\" \"c:/Users/shiva/OneDrive/Desktop/VV-v1/VV-v1/frontend/src/pages/WardDetail.jsx\")",
+      "Bash(\"$PY\" test_local.py)",
+      "Bash(\"$PY\" train_all.py)",
+      "Bash(\"$PY\" app/data/openaq_loader.py)",
+      "Bash(PY=\"C:/Users/shiva/AppData/Local/Python/bin/python3.exe\" \"$PY\" -m pip install requests python-dotenv -q)",
+      "Bash(PYTHONPATH=\".\" \"$PY\" app/data/openaq_loader.py)",
+      "Bash(PYTHONPATH=\".\" \"C:\\\\Users\\\\shiva\\\\AppData\\\\Local\\\\Python\\\\bin\\\\python3.exe\" app/data/openaq_loader.py)",
+      "Bash(\"C:\\\\Users\\\\shiva\\\\AppData\\\\Local\\\\Python\\\\bin\\\\python3.exe\" -c \":*)",
+      "Bash(PYTHONPATH=\".\" \"C:\\\\Users\\\\shiva\\\\AppData\\\\Local\\\\Python\\\\bin\\\\python3.exe\" -c \":*)"
+    ]
+  }
+}
