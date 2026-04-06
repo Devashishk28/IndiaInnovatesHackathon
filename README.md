@@ -1,110 +1,96 @@
-# Delhi AQI Intelligence Platform
+## VayuVigyan – Hyper-Local AQI Intelligence System
 
-Government-grade Air Quality Intelligence Platform for Delhi NCR — 272 monitoring points, ML-powered source detection, GRAP alerts.
+# India Innovates 2026 Hackathon Project
 
-## Quick Start
+VayuVigyan is an AI-powered system designed to provide real-time air quality monitoring, prediction, and actionable insights at a hyper-local level.
 
-### Prerequisites
-- Python 3.10+
-- Node.js 18+
-- MongoDB (optional — falls back gracefully)
+## Team Members
+Devashish Kubade
+Saurav Biswal
+Ayansh Jain
+Shivam Chouthe
+Kalyani Jadhao
+SCOE, Pune
+## Problem Statement
 
----
+Air pollution data available today is often too generalized, usually limited to city-level averages. It does not provide actionable insights, lacks identification of pollution sources, and fails to predict future air quality trends. This limits effective decision-making for both citizens and authorities.
 
-### Backend (FastAPI)
+## Proposed Solution:
 
-```bash
-cd backend
+VayuVigyan addresses these challenges through:
 
-# 1. Install Python dependencies
-pip install -r requirements.txt
+Hyper-local AQI mapping at ward level instead of city averages
+Machine learning-based source detection (traffic, construction, dust, burning)
+3–5 day air quality prediction
+Real-time monitoring of pollution spikes
+Smart recommendations for citizens and authorities
+Policy impact tracking to measure effectiveness of interventions
+Data-driven decision support for efficient resource allocation
+System Architecture
+Layer 1: Data Ingestion
+OpenAQ API and CPCB datasets
+Python-based data collection
+15-minute refresh cycle
+Layer 2: Processing and AI
+XGBoost for prediction
+SHAP for explainable AI
+Source detection with high accuracy
+Layer 3: Backend Services
+FastAPI
+PostgreSQL
+Pydantic and Uvicorn
+Low-latency API responses
+Layer 4: Frontend
+React.js
+Tailwind CSS
+Shadcn UI
+Leaflet.js for mapping
+Tech Stack
 
-# 2. Train ML models (takes ~30s)
-python models/train_model.py
+# Frontend: React.js, Tailwind CSS, Shadcn UI
+# Backend: FastAPI, Pydantic, Uvicorn
+# AI/ML: XGBoost, Scikit-learn, SHAP
+# Mapping: Leaflet.js, OpenStreetMap, GeoJSON
+# Data and Infrastructure: OpenAQ API, Pandas, NumPy, Vercel
 
-# 3. Start the server
-uvicorn main:app --reload --port 8000
-```
+## Key Features:
 
-API available at: http://localhost:8000
-Swagger docs: http://localhost:8000/docs
+Pollutant Fingerprinting
+Uses PM2.5, PM10, and NO2 ratios to identify pollution sources with precision.
 
----
+Ward-Level Intelligence
+Detects localized pollution spikes and enables better planning.
 
-### Frontend (React + Vite)
+Explainable AI
+Provides clear reasoning behind predictions for transparency.
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
+Decision Support System
+Connects insights to actionable steps for authorities, enabling targeted interventions instead of large-scale shutdowns.
 
-App available at: http://localhost:5173
+## Impact
 
----
+For Citizens:
 
-## Architecture
+Better health awareness
+Improved daily activity planning
+Reduced pollution exposure
 
-```
-backend/
-  main.py                 FastAPI app entry point
-  data/delhi_wards.py     272 Delhi wards (20 CPCB + 252 interpolated)
-  models/
-    train_model.py        Train source detector + AQI forecaster
-    source_detector.pkl   Random Forest (95% accuracy)
-    aqi_forecaster.pkl    XGBoost 24-hour forecaster
-  services/
-    waqi_service.py       WAQI live API + mock fallback
-    interpolation_service.py  IDW spatial interpolation
-  routers/
-    wards.py             GET /api/wards, /api/wards/{id}, /api/summary
-    ml.py                POST /api/predict/source, /api/predict/aqi
-    alerts.py            GET /api/alerts (GRAP stage auto-computed)
-    auth.py              POST /api/auth/login (JWT)
-    admin.py             GET /api/admin/* (JWT protected)
-    reports.py           POST/GET /api/reports, /api/blindspots
+For Authorities:
 
-frontend/src/
-  App.jsx                Router + layout + health modal
-  services/api.js        All API calls with mock fallback
-  pages/
-    Dashboard.jsx        Summary cards + full map + source panel
-    MapView.jsx          Full-screen 272-ward map
-    WardDetail.jsx       Pollutant breakdown + 24h forecast
-    HealthAdvisory.jsx   Personalised health protocols
-    AdminPanel.jsx       JWT-protected admin interface
-  components/
-    Map/DelhiMap.jsx     Leaflet map with 272 markers
-    GRAP/AlertBanner.jsx Persistent GRAP stage banner
-    Health/HealthModal.jsx First-visit health profile
-    SourceDetection/SourceChart.jsx  Animated source bars
-```
+Data-driven decisions
+Efficient allocation of resources
+Monitoring effectiveness of policies
+Workflow
 
-## API Keys
+Data Collection → Processing → Prediction → Visualization → Actionable Insights
 
-Copy `.env.example` to `backend/.env` and fill in your keys:
-
-- `WAQI_API_KEY` — https://aqicn.org/api/
-- `OPENAQ_API_KEY` — https://openaq.org/
-- `WEATHER_API_KEY` — https://www.weatherapi.com/
-- `NEWS_API_KEY` — https://newsapi.org/
-
-All APIs have mock fallbacks — the platform works offline.
-
-## Admin Credentials
-
-| Email | Password | Role |
-|-------|----------|------|
-| admin@delhi.gov.in | Admin@123 | Admin |
-| superadmin@delhi.gov.in | Super@123 | Superadmin |
-
-## AQI Color Bands
-
-| AQI | Color | Category |
-|-----|-------|----------|
-| 0–50 | #00e400 | Good |
-| 51–100 | #ffff00 | Satisfactory |
-| 101–200 | #ff7e00 | Moderate |
-| 201–300 | #ff0000 | Poor |
-| 301–400 | #8f3f97 | Very Poor |
-| 401+ | #7e0023 | Severe |
+## Future Scope
+Mobile application integration
+IoT-based sensor deployment
+Clean route navigation system
+Integration with government dashboards
+References
+OpenAQ API
+CPCB emission datasets
+CSTEP research on PM10 monitoring
+NO2 health impact studies
